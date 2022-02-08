@@ -5,20 +5,19 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI /*implements ActionListener*/ {
+public class GUI implements ActionListener {
 
-    JPanel panel;
-    JLabel usernameLabel;
-    JLabel passwordLabel;
-    JButton button;
-    JFrame frame;
-    JTextField textField;
-    JPasswordField passwordField;
-    JLabel successLabel;
+    private static JFrame frame;
+    private static JPanel panel;
+    private static JLabel usernameLabel;
+    private static JLabel passwordLabel;
+    private static JButton button;
+    private static JTextField textField;
+    private static JPasswordField passwordField;
+    private static JLabel successLabel;
 
-    int count = 0;
+    public static void main (String[] args) {
 
-    public GUI() {
         frame = new JFrame();
         button = new JButton("Log in");
         usernameLabel = new JLabel("Username");
@@ -26,15 +25,23 @@ public class GUI /*implements ActionListener*/ {
         panel = new JPanel();
         textField = new JTextField(20);
         passwordField = new JPasswordField(20);
-        successLabel = new JLabel("");
+        successLabel = new JLabel("s");
 
-        frame.add(panel, BorderLayout.CENTER);
+        frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Window");
         frame.setVisible(true);
         frame.setSize(400,250);
 
-        //button.addActionListener(new GUI());
+        button.addActionListener(new GUI());
+
+        //SETTING BOUNDS
+        usernameLabel.setBounds(10, 20, 80, 25);
+        passwordLabel.setBounds(10, 50, 80, 25);
+        textField.setBounds(100, 20, 165, 25);
+        passwordField.setBounds(100, 50, 165, 25);
+        button.setBounds(10, 80, 80, 25);
+        successLabel.setBounds(10, 110, 300, 25);
 
         //ADD PANELS
         panel.setLayout(null);
@@ -44,25 +51,12 @@ public class GUI /*implements ActionListener*/ {
         panel.add(passwordField);
         panel.add(button);
         panel.add(successLabel);
-
-        //SETTING BOUNDS
-        usernameLabel.setBounds(10, 20, 80, 25);
-        passwordLabel.setBounds(10, 50, 80, 25);
-        textField.setBounds(100, 20, 165, 25);
-        passwordField.setBounds(100, 50, 165, 25);
-        button.setBounds(10, 80, 80, 25);
-        successLabel.setBounds(10,110,300, 25);
-
-
-
-    }
-
-    public static void main (String[] args) {
-    new GUI();
     }
 
 
-
-    //public void actionPerformed(ActionEvent actionEvent) {}
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        System.out.println("Button clicked");
+    }
 
 }
